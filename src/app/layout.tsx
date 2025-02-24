@@ -16,10 +16,7 @@ export default function RootLayout({
     <html lang="pl">
       <body>
         <Globals />
-        <StyledComponentsRegistry>
-          {children}
-          <footer>Wspólna stopka</footer>
-        </StyledComponentsRegistry>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
     </html>
   )
