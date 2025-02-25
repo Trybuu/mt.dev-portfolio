@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export function useWebsiteLoading(): boolean {
   const [isWebsiteLoaded, setWebsiteLoaded] = useState<boolean>(false)
+  const timeoutId = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
-
     const handleWebsiteLoad = () => {
-      timeoutId = setTimeout(() => setWebsiteLoaded(true), 1000)
+      timeoutId.current = setTimeout(() => setWebsiteLoaded(true), 1000)
     }
 
     if (
@@ -16,12 +15,15 @@ export function useWebsiteLoading(): boolean {
     ) {
       handleWebsiteLoad()
     } else {
-      document.addEventListener('DOMContentLoaded', handleWebsiteLoad)
+      document.addEventListener('DOMContentLoaded', handleWebsiteLoad, {
+        once: true,
+      })
     }
 
     return () => {
-      document.removeEventListener('DOMContentLoaded', handleWebsiteLoad)
-      clearTimeout(timeoutId)
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current)
+      }
     }
   }, [])
 

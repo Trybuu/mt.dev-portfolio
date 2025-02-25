@@ -1,11 +1,17 @@
 'use client'
 
 import { createGlobalStyle } from 'styled-components'
-import { Inter } from 'next/font/google'
+import { IBM_Plex_Mono, Poppins } from 'next/font/google'
 
-const inter = Inter({
+const inter = Poppins({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: ['200', '400', '600'],
+  display: 'swap',
+})
+
+export const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
   display: 'swap',
 })
 
@@ -19,6 +25,18 @@ const Globals = createGlobalStyle`
         font-family:  ${inter.style.fontFamily}, sans-serif;
         font-weight: 400;
         font-style: normal;
+        color: #131311;
+    }
+
+    body{
+        min-height: 400vh;
+        /* background-color: #E5E5E0; */
+        background-color: #E0DED8;
+    }
+
+    a{
+        color: #131311;
+        text-decoration: none;
     }
 `
 

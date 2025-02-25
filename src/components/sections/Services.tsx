@@ -1,79 +1,65 @@
 'use client'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, MotionValue, useTransform } from 'framer-motion'
 import styled from 'styled-components'
 
-const Section = styled.section`
+const Section = styled(motion.section)`
   position: relative;
-  min-height: 300vh; /* Długi scroll */
-  background-color: black;
+  /* min-height: 150vh; */
+  padding: ${({ theme }) => theme.containerPadding.mobile};
+  background-color: #222;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
+  z-index: 100;
+  border-radius: 1rem 1rem 0 0;
 `
 
-const StickyContainer = styled.div`
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  width: 100%;
-  overflow: hidden;
-`
-
-const Layer = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  font-weight: bold;
-  color: black;
-`
-
-export function Services() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start'], // Śledzenie przewijania
-  })
-
-  // Animacja opacity i Y (przesunięcie)
-  const y1 = useTransform(scrollYProgress, [0, 0.3, 0.4], [0, 0, -100])
-  const opacity1 = useTransform(scrollYProgress, [0, 0.3, 0.4], [1, 1, 0])
-
-  const y2 = useTransform(scrollYProgress, [0.4, 0.6, 0.7], [100, 0, -100])
-  const opacity2 = useTransform(scrollYProgress, [0.4, 0.6, 0.7], [0, 1, 0])
-
-  const y3 = useTransform(scrollYProgress, [0.7, 0.9, 1], [100, 0, 0])
-  const opacity3 = useTransform(scrollYProgress, [0.7, 0.9, 1], [0, 1, 1])
-
+export function Services({
+  scrollYProgress,
+}: {
+  scrollYProgress: MotionValue<number>
+}) {
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1])
   return (
-    <Section ref={ref}>
-      <StickyContainer>
-        <Layer style={{ backgroundColor: 'green', opacity: opacity1, y: y1 }}>
-          <h2>HOW CAN I HELP YOU?</h2>
-        </Layer>
+    <Section style={{ scale }}>
+      <h2>How can I help you</h2>
 
-        <Layer style={{ backgroundColor: 'yellow', opacity: opacity2, y: y2 }}>
-          <h2>Service 1</h2>
-        </Layer>
+      <div>
+        <span>01.</span>
+        <h3>Web Development</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe velit
+          fugit consequuntur doloribus voluptatem officia numquam praesentium
+          eos ipsum quia error exercitationem nobis adipisci vitae dolorum
+          maxime repellendus quas sint ratione illum, rem architecto? Asperiores
+          perspiciatis ipsum dicta repudiandae rem maxime. Voluptates numquam
+          eaque nam ad voluptate dicta dolorum labore!
+        </p>
+      </div>
 
-        <Layer style={{ backgroundColor: 'red', opacity: opacity3, y: y3 }}>
-          <h2>Service 2</h2>
-        </Layer>
-      </StickyContainer>
+      <div>
+        <span>02.</span>
+        <h3>SEO</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe velit
+          fugit consequuntur doloribus voluptatem officia numquam praesentium
+          eos ipsum quia error exercitationem nobis adipisci vitae dolorum
+          maxime repellendus quas sint ratione illum, rem architecto? Asperiores
+          perspiciatis ipsum dicta repudiandae rem maxime. Voluptates numquam
+          eaque nam ad voluptate dicta dolorum labore!
+        </p>
+      </div>
+
+      <div>
+        <span>03.</span>
+        <h3>Mobile Applications</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe velit
+          fugit consequuntur doloribus voluptatem officia numquam praesentium
+          eos ipsum quia error exercitationem nobis adipisci vitae dolorum
+          maxime repellendus quas sint ratione illum, rem architecto? Asperiores
+          perspiciatis ipsum dicta repudiandae rem maxime. Voluptates numquam
+          eaque nam ad voluptate dicta dolorum labore!
+        </p>
+      </div>
     </Section>
   )
 }
