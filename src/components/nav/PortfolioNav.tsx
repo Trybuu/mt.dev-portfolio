@@ -2,6 +2,7 @@ import { MotionValue } from 'framer-motion'
 import { Logo } from '../ui/Logo'
 import { LinksGroup } from './LinksGroup'
 import { NavContainer } from './NavContainer'
+import { CurrentPageInfo } from './CurrentPageInfo'
 
 export function PortfolioNav({
   scrollYProgress,
@@ -11,7 +12,7 @@ export function PortfolioNav({
   return (
     <NavContainer scrollYProgress={scrollYProgress}>
       <Logo />
-      <span>(Web Developer)</span>
+      <CurrentPageInfo info="Web Developer Portfolio" />
       <LinksGroup />
     </NavContainer>
   )
