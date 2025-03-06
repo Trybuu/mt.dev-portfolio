@@ -1,4 +1,4 @@
-'use client' // Ponieważ używamy animacji
+'use client'
 
 import Image from 'next/image'
 import { motion, MotionValue, useInView, useTransform } from 'framer-motion'
@@ -7,39 +7,70 @@ import { useRef } from 'react'
 import { useWebsiteLoading } from '@/hooks/useWebsiteLoading'
 import Link from 'next/link'
 import { MdOutlineArrowOutward } from 'react-icons/md'
-import { plexMono } from '@/styles/Globals'
+import { Availability } from './Availability'
 
 const Section = styled(motion.section)`
   position: sticky;
   top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   min-height: 100vh;
-  overflow: hidden;
-  /* background-color: white; */
   z-index: -1;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: ${({ theme }) => theme.containerPadding.laptop};
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: ${({ theme }) => theme.containerPadding.desktop};
+  }
 `
 
 const TextContent = styled(motion.div)`
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
   padding: ${({ theme }) => theme.containerPadding.mobile};
   opacity: 0;
+
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+  }
+`
+
+const Title = styled.h1`
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+
+  svg {
+    color: ${({ theme }) => theme.colors.bright};
+  }
+`
+
+const Paragraph = styled.p`
+  /* width: 100%;  */
+
+  /* @media screen and (orientation: landscape) and (min-width: 1024px) {
+    width: 50%;
+  } */
 `
 
 const ImageWrapper = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 100%;
+  display: none;
 
-  div {
-    top: 90%;
-    left: 0;
-    position: absolute;
-    font-family: ${plexMono.style.fontFamily};
-    text-transform: uppercase;
-    color: #706c61;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    width: 40%;
   }
 `
 
@@ -52,14 +83,13 @@ const StyledLinkButton = styled(Link)`
   justify-content: center;
   align-items: center;
   align-self: flex-start;
-  gap: 0.5rem;
-  padding: 1rem 3rem;
-  margin-top: 1rem;
-  background-color: black;
-  border-radius: 2rem;
-  color: #e0ded8;
-  text-transform: uppercase;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.primary};
   font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 2rem;
   cursor: pointer;
 `
 
@@ -82,12 +112,16 @@ export function Hero({
         animate={isInView && isWebsiteLoaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
       >
-        <MdOutlineArrowOutward style={{ rotate: '90deg' }} />
-        <h2>Witaj, mam na imię Marek.</h2>
-        <p>
+        <Title>
+          <span>
+            <MdOutlineArrowOutward style={{ rotate: '90deg' }} />
+          </span>
+          <span>Witaj, mam na imię Marek.</span>
+        </Title>
+        <Paragraph>
           Specjalizuję się w tworzeniu szybkich i funkcjonalnych stron
           internetowych, które odpowiadają na potrzeby klientów.
-        </p>
+        </Paragraph>
         <StyledLinkButton href="#">
           Kontakt <MdOutlineArrowOutward />
         </StyledLinkButton>
@@ -99,29 +133,16 @@ export function Hero({
         transition={{ duration: 1 }}
       >
         <StyledImage
-          style={{ scale }}
+          style={{ scale, width: '50%', height: 'auto' }}
           src={'/images/jake-nackos-CUYWM4KoFig-unsplash.jpg'}
           alt="-"
-          width={200} // Określ szerokość obrazka
-          height={300} // Określ wysokość obrazka
-          // layout="responsive" // Może być 'intrinsic', 'fixed', 'responsive'
+          width={1500}
+          height={2200}
+          quality={100}
           priority
         />
-
-        <div>
-          <p>Otwarty na propozycje współpracy</p>
-          <h3>Luty 2025</h3>
-        </div>
+        <Availability />
       </ImageWrapper>
-
-      {/* <TextContent
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView && isWebsiteLoaded ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1 }}
-      >
-        <p>Otwarty na propozycje współpracy</p>
-        <p>Luty 2025</p>
-      </TextContent> */}
     </Section>
   )
 }

@@ -25,7 +25,7 @@ const Globals = createGlobalStyle`
         font-family:  ${inter.style.fontFamily}, sans-serif;
         font-weight: 400;
         font-style: normal;
-        color: #131311;
+        color: #33312A;
     }
 
     body{

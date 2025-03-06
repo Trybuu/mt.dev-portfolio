@@ -5,6 +5,7 @@ export const theme = {
     primary: '#E0DED8',
     secondary: '#33312A',
     accent: '#9F967C',
+    bright: '#BCBCBC',
   },
   containerPadding: {
     mobile: '1rem',
