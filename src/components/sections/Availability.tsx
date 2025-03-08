@@ -1,6 +1,19 @@
 import { plexMono } from '@/styles/Globals'
 import { useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const rotateAnimation = keyframes`
+    0%{
+        transform: rotate(0) scale(1)
+    }
+
+    50%{
+        transform: scale(1.2)
+    }
+    100%{
+        transform: rotate(360deg) scale(1)
+    }
+`
 
 const Container = styled.div`
   display: flex;
@@ -19,6 +32,7 @@ const Indicator = styled.div`
   border-radius: 50%;
   filter: blur(1px);
   background-image: linear-gradient(#0cdd66, #1ba356);
+  animation: ${rotateAnimation} 3s linear infinite;
 `
 
 const Info = styled.p``

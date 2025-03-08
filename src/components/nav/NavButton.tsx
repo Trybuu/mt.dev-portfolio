@@ -1,4 +1,7 @@
+'use client'
+
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
+import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
 
 const Button = styled.button`
@@ -14,10 +17,16 @@ const Button = styled.button`
   border-radius: 50%;
 `
 
-export function NavButton() {
+export function NavButton({
+  onClick,
+  isOpen,
+}: {
+  onClick: () => void
+  isOpen: boolean
+}) {
   return (
-    <Button>
-      <HiOutlineMenuAlt4 />
+    <Button onClick={onClick}>
+      {isOpen ? <IoMdClose /> : <HiOutlineMenuAlt4 />}
     </Button>
   )
 }

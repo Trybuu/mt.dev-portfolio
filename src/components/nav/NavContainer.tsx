@@ -1,10 +1,10 @@
 'use client'
 
-import { useWebsiteLoading } from '@/hooks/useWebsiteLoading'
-import { motion, MotionValue, useTransform } from 'framer-motion'
+import { NavMobile } from './NavMobile'
 import styled from 'styled-components'
-import { NavButton } from './NavButton'
+import { motion, MotionValue, useTransform } from 'framer-motion'
 import { useWindowDimensions } from '@/hooks/useWindowDimensions'
+import { useWebsiteLoading } from '@/hooks/useWebsiteLoading'
 
 const Nav = styled(motion.nav)`
   position: fixed;
@@ -48,7 +48,7 @@ export function NavContainer({
       style={{ translateY, opacity }}
     >
       {children}
-      {dimensions.width < 1024 ? <NavButton /> : null}
+      {dimensions.width < 1024 ? <NavMobile /> : null}
     </Nav>
   )
 }

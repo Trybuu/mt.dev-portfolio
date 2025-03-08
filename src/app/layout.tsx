@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body>
+      <body id="main">
         <Globals />
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>

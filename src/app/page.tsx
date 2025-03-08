@@ -1,7 +1,6 @@
 'use client'
 import { PortfolioNav } from '@/components/nav/PortfolioNav'
 import { Hero } from '@/components/sections/Hero'
-import { Services } from '@/components/sections/Services'
 import { WebsiteLoading } from '@/components/ui/WebsiteLoading'
 import { theme } from '@/styles/Theme'
 import { motion, useScroll } from 'framer-motion'
