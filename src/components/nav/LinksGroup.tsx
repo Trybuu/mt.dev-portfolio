@@ -42,7 +42,7 @@ export function LinksGroup() {
       </Link>
       <Line />
       <a href="/documents/cv.pdf" target="_blank">
-        <span>Resume</span>
+        <span>Życiorys</span>
         <GrDownload />
       </a>
     </Group>
