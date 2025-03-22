@@ -40,7 +40,7 @@ const Section = styled.section`
   }
 `
 
-const ButtonLink = styled.a`
+const ButtonLink = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,33 +49,76 @@ const ButtonLink = styled.a`
   height: 6rem;
   width: 6rem;
   background-color: ${({ theme }) => theme.colors.accent};
+  border: none;
   border-radius: 50%;
+  cursor: pointer;
 `
 
+const navLinks = [
+  {
+    id: 'start-section',
+    text: 'Start',
+    href: '#',
+  },
+  {
+    id: 'services-section',
+    text: 'Usługi',
+    href: '#',
+  },
+  {
+    id: 'projects-section',
+    text: 'Projekty',
+    href: '#',
+  },
+  {
+    id: 'about-section',
+    text: 'O mnie',
+    href: '#',
+  },
+  {
+    id: 'contact-section',
+    text: 'Kontakt',
+    href: '#',
+  },
+]
+
 export function Footer() {
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+  ) => {
+    e.preventDefault()
+    const section = document.getElementById(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' })
+      window.history.pushState(null, '', `#${sectionId}`)
+    }
+  }
+
+  // funkcja przewijania dla przycisku "w górę"
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
+  const navElements = navLinks.map((navLink) => {
+    return (
+      <li key={navLink.id}>
+        <Link href={navLink.href} onClick={(e) => handleOnClick(e, navLink.id)}>
+          {navLink.text}
+        </Link>
+      </li>
+    )
+  })
   return (
     <FooterWrapper>
       <Section>
         <header>
           <h2>Menu</h2>
         </header>
-        <ul>
-          <li>
-            <Link href={'#'}>Start</Link>
-          </li>
-          <li>
-            <Link href={'#'}>Usługi</Link>
-          </li>
-          <li>
-            <Link href={'#'}>Projekty</Link>
-          </li>
-          <li>
-            <Link href={'#'}>O mnie</Link>
-          </li>
-          <li>
-            <Link href={'#'}>Kontakt</Link>
-          </li>
-        </ul>
+        <ul>{navElements}</ul>
       </Section>
       <Section>
         <header>
@@ -83,21 +126,27 @@ export function Footer() {
         </header>
         <ul>
           <li>
-            <Link href={'#'}>Linkedin</Link>
+            <Link
+              href={'https://www.linkedin.com/in/trybulamarek/'}
+              target="_blank"
+            >
+              Linkedin
+            </Link>
           </li>
           <li>
-            <Link href={'#'}>Github</Link>
+            <Link href={'https://github.com/trybuu'} target="_blank">
+              Github
+            </Link>
           </li>
           <li>
-            <Link href={'#'}>Useme</Link>
-          </li>
-          <li>
-            <Link href={'#'}>LeetCode</Link>
+            <Link href={'https://leetcode.com/u/Trybuu/'} target="_blank">
+              LeetCode
+            </Link>
           </li>
         </ul>
       </Section>
       <section>
-        <ButtonLink href="#" aria-label="Przewiń na górę">
+        <ButtonLink aria-label="Przewiń na górę" onClick={handleScrollToTop}>
           <IoMdArrowUp />
         </ButtonLink>
       </section>

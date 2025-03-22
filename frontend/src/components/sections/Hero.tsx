@@ -5,7 +5,6 @@ import { motion, MotionValue, useInView, useTransform } from 'framer-motion'
 import styled from 'styled-components'
 import { useRef } from 'react'
 import { useWebsiteLoading } from '@/hooks/useWebsiteLoading'
-import Link from 'next/link'
 import { MdOutlineArrowOutward } from 'react-icons/md'
 import { Availability } from './Availability'
 
@@ -17,7 +16,7 @@ const Section = styled(motion.section)`
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  z-index: -1;
+  z-index: 1;
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -78,8 +77,8 @@ const StyledImage = styled(motion(Image))`
   border-radius: 0.5rem;
 `
 
-const StyledLinkButton = styled(Link)`
-  display: inline-flex;
+const StyledLinkButton = styled.button`
+  /* display: inline-flex; */
   justify-content: center;
   align-items: center;
   align-self: flex-start;
@@ -89,6 +88,7 @@ const StyledLinkButton = styled(Link)`
   color: ${({ theme }) => theme.colors.primary};
   font-weight: 600;
   text-transform: uppercase;
+  border: none;
   border-radius: 2rem;
   cursor: pointer;
 `
@@ -105,8 +105,14 @@ export function Hero({
   const opacity = useTransform(scrollYProgress, [0, 0.25], [1, 0])
   const translateY = useTransform(scrollYProgress, [0, 0.5], [0, -100])
 
+  const handleScrollToContact = () => {
+    document.getElementById('contact-section')?.scrollIntoView({
+      behavior: 'smooth',
+    })
+  }
+
   return (
-    <Section ref={ref} style={{ opacity, translateY }}>
+    <Section ref={ref} style={{ opacity, translateY }} id="start-section">
       <TextContent
         initial={{ opacity: 0, y: 50 }}
         animate={isInView && isWebsiteLoaded ? { opacity: 1, y: 0 } : {}}
@@ -119,10 +125,10 @@ export function Hero({
           <span>Witaj, mam na imię Marek.</span>
         </Title>
         <Paragraph>
-          Specjalizuję się w tworzeniu szybkich i funkcjonalnych stron
-          internetowych, które odpowiadają na potrzeby klientów.
+          Tworzę szybkie i funkcjonalne strony internetowe, które odpowiadają na
+          potrzeby klientów.
         </Paragraph>
-        <StyledLinkButton href="#">
+        <StyledLinkButton onClick={handleScrollToContact}>
           Kontakt <MdOutlineArrowOutward />
         </StyledLinkButton>
       </TextContent>

@@ -47,25 +47,25 @@ export function Services({
       id: 1,
       title: 'Kompleksowe tworzenie stron internetowych',
       description:
-        'Tworzę nowoczesne, szybkie i responsywne strony dopasowane do Twoich potrzeb – od projektu graficznego po wdrożenie.',
+        'Projektuję i wdrażam nowoczesne, responsywne strony internetowe, które wyróżniają się szybkością, funkcjonalnością i estetyką. Każdy projekt dopasowuję do Twoich potrzeb, dbając o intuicyjność i doskonałe wrażenia użytkowników.',
     },
     {
       id: 2,
       title: 'Unikalny design dopasowany do Twojej marki',
       description:
-        'Tworzę nowoczesne, szybkie i responsywne strony dopasowane do Twoich potrzeb – od projektu graficznego po wdrożenie.',
+        'Tworzę strony, które nie tylko wyglądają świetnie, ale także oddają charakter Twojej marki. Dzięki indywidualnemu podejściu każda strona jest wyjątkowa i spójna z identyfikacją wizualną Twojej firmy.',
     },
     {
       id: 3,
       title: 'Optymalizacja pod wyszukiwarki (SEO)',
       description:
-        'Tworzę nowoczesne, szybkie i responsywne strony dopasowane do Twoich potrzeb – od projektu graficznego po wdrożenie.',
+        'Dbam o to, aby Twoja strona była dobrze widoczna w wynikach wyszukiwania. Optymalizuję kod, strukturę i treści, aby zwiększyć jej pozycję w Google i przyciągnąć więcej klientów.',
     },
     {
       id: 4,
       title: 'Wsparcie i rozwój strony',
       description:
-        'Tworzę nowoczesne, szybkie i responsywne strony dopasowane do Twoich potrzeb – od projektu graficznego po wdrożenie.',
+        'Po wdrożeniu nie zostawiam Cię bez opieki. Oferuję bieżące wsparcie techniczne, aktualizacje oraz rozwój strony, aby zawsze była nowoczesna, bezpieczna i dostosowana do zmieniających się trendów.',
     },
   ]
 
@@ -107,7 +107,7 @@ export function Services({
   })
 
   return (
-    <section>
+    <section id="services-section">
       <SectionTitle title="Czego potrzebujesz" />
       {servicesElements}
     </section>

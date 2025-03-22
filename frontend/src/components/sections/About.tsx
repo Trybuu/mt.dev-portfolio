@@ -36,8 +36,6 @@ const Articles = styled.div`
 const Article = styled(motion.article)`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 1.5rem;
   width: 100%;
   max-width: 800px;
@@ -45,7 +43,7 @@ const Article = styled(motion.article)`
   @media (min-width: 1024px) {
     position: absolute;
     flex-direction: row;
-    text-align: left;
+    align-items: center;
   }
 
   .image-wrapper {
@@ -105,32 +103,32 @@ const aboutData = [
   {
     id: 0,
     displayNumber: '01',
-    title: 'O mnie',
-    text: 'Jestem frontend developerem z pasją do tworzenia nowoczesnych, responsywnych i intuicyjnych interfejsów użytkownika. Specjalizuję się w React, TypeScript i CSS-in-JS. Uwielbiam optymalizować wydajność aplikacji i dbać o doskonałe UX. Stale rozwijam swoje umiejętności, śledząc najnowsze trendy w web development. Cenię czysty kod, dostępność i dobrą współpracę zespołową. ',
+    title: 'Kim jestem',
+    text: 'Jestem frontend developerem z pasją do tworzenia nowoczesnych, responsywnych i intuicyjnych interfejsów użytkownika. Specjalizuję się w React, TypeScript i CSS-in-JS. Dbam o responsywność, optymalizację i dostępność stron i aplikacji. ',
     imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
     imageAlit: 'Moje zdjęcie',
   },
   {
     id: 1,
     displayNumber: '02',
-    title: 'Czym się zajmuje',
-    text: 'Jestem frontend developerem z pasją do tworzenia nowoczesnych, responsywnych i intuicyjnych interfejsów użytkownika. Specjalizuję się w React, TypeScript i CSS-in-JS. Uwielbiam optymalizować wydajność aplikacji i dbać o doskonałe UX. Stale rozwijam swoje umiejętności, śledząc najnowsze trendy w web development. Cenię czysty kod, dostępność i dobrą współpracę zespołową. ',
+    title: 'Poza kodem',
+    text: 'Poza programowaniem jestem osobą otwartą na nowe doświadczenia i wyzwania. Wolny czas lubię spędzać aktywnie - na siłowni, rowerze czy rolkach. Cenię czas spędzany z najbliższymi, nie odmówię wieczoru z ciekawą planszówką.',
     imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
     imageAlit: 'Moje zdjęcie',
   },
   {
     id: 2,
     displayNumber: '03',
-    title: 'Dokąd zmierzam',
-    text: 'Jestem frontend developerem z pasją do tworzenia nowoczesnych, responsywnych i intuicyjnych interfejsów użytkownika. Specjalizuję się w React, TypeScript i CSS-in-JS. Uwielbiam optymalizować wydajność aplikacji i dbać o doskonałe UX. Stale rozwijam swoje umiejętności, śledząc najnowsze trendy w web development. Cenię czysty kod, dostępność i dobrą współpracę zespołową. ',
+    title: 'Nieustanny rozwój',
+    text: 'Świat technologii zmienia się błyskawicznie, więc staram się nieustannie poszerzać swoją wiedzę. Zawsze mam zaplanowane kolejne etapy nauki, aby rozwijać się świadomie i skutecznie.',
     imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
     imageAlit: 'Moje zdjęcie',
   },
   {
     id: 3,
     displayNumber: '04',
-    title: 'Czym się interesuje',
-    text: 'Jestem frontend developerem z pasją do tworzenia nowoczesnych, responsywnych i intuicyjnych interfejsów użytkownika. Specjalizuję się w React, TypeScript i CSS-in-JS. Uwielbiam optymalizować wydajność aplikacji i dbać o doskonałe UX. Stale rozwijam swoje umiejętności, śledząc najnowsze trendy w web development. Cenię czysty kod, dostępność i dobrą współpracę zespołową. ',
+    title: 'Stack technologiczny',
+    text: 'Na co dzień pracuję z technologiami takimi jak TypeScript, JavaScript, React, Redux, React Router, React Hook Form, Axios, HTML, CSS i SCSS. Tworzę nowoczesne, wydajne i intuicyjne aplikacje, dbając o ich responsywność oraz dostępność. Nieustannie dążę do poszerzania swoich umiejętności. Obecnie koncentruję się na nauce Vue.js i React Native, aby lepiej zrozumieć ekosystem frontendu. Dodatkowo zamierzam zgłębić backendowe technologie, takie jak Express, GraphQL, Redis i PostgreSQL, a także rozwiązania chmurowe, w tym AWS. Moim celem jest rozwój w kierunku bardziej wszechstronnego full-stack developera.',
     imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
     imageAlit: 'Moje zdjęcie',
   },
@@ -148,7 +146,7 @@ export function About() {
   )
 
   return (
-    <StyledSection>
+    <StyledSection id="about-section">
       <Nav>
         <header>
           <Subtitle accent={true} align="left">

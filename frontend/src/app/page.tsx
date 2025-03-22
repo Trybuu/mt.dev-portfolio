@@ -14,6 +14,7 @@ import styled, { ThemeProvider } from 'styled-components'
 
 const StickyContainer = styled(motion.div)`
   position: relative;
+  z-index: 0;
   /* height: 200vh; */
 `
 

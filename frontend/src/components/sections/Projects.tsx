@@ -2,7 +2,7 @@ import { SectionTitle } from '../ui/SectionTitle'
 
 export function Projects() {
   return (
-    <section>
+    <section id="projects-section">
       <SectionTitle title="Ostatnie projekty" />
     </section>
   )

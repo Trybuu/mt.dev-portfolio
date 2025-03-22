@@ -22,13 +22,12 @@ const WrapperInner = styled.div<{ $isFlipped: boolean }>`
   position: relative;
   width: 100%;
   min-height: 90vh;
+  height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
 
   transform: ${({ $isFlipped }) =>
     $isFlipped ? 'rotateY(180deg)' : 'rotateY(0)'};
-
-  border: 2px solid pink;
 `
 
 const Section = styled.section`
@@ -57,6 +56,13 @@ const SectionBack = styled(Section)`
   padding: 1rem;
   gap: 4rem;
   transform: rotateY(180deg);
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -121,12 +127,12 @@ export function Contact() {
   const [isFlipped, setIsFlipped] = useState(false)
 
   return (
-    <Wrapper>
+    <Wrapper id="contact-section">
       <WrapperInner $isFlipped={isFlipped}>
         <SectionFront>
           <div>
             <Subtitle dark={false}>(Napisz do mnie jeśli)</Subtitle>
-            <Title>Chcesz współpracować</Title>
+            <Title textAlign="center">Chcesz współpracować</Title>
           </div>
 
           <Button onClick={() => setIsFlipped(!isFlipped)}>
@@ -140,6 +146,8 @@ export function Contact() {
               <HiMiniArrowUturnLeft />
             </ButtonGhost>
 
+            <Title>Gotowy na współpracę?</Title>
+
             <Form action="">
               <input type="text" placeholder="Twoje imię" />
               <input type="text" placeholder="Twój e-mail" />
@@ -148,15 +156,6 @@ export function Contact() {
                 Wyślij <MdArrowOutward />
               </Button>
             </Form>
-          </div>
-
-          <div>
-            <Title>Gotowy na współpracę?</Title>
-            <p>
-              Nie wahaj się ze mną skontaktować. Jestem tutaj, aby pomóc Ci
-              wcielić Twój projekt w życie. Wypełnij poniższy formularz, a ja
-              skontaktuję się z Tobą tak szybko, jak to możliwe.
-            </p>
           </div>
         </SectionBack>
       </WrapperInner>

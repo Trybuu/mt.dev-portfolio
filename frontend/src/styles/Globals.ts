@@ -32,6 +32,10 @@ const Globals = createGlobalStyle`
         background-color: #E0DED8;
     }
 
+    html, body{
+        overflow: auto;
+    }
+
     a{
         color: #131311;
         text-decoration: none;

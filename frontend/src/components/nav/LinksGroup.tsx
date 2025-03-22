@@ -22,6 +22,12 @@ const Group = styled.div`
     align-items: center;
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  .disabled-link {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+  }
 `
 
 const Line = styled.div`
@@ -35,9 +41,18 @@ export function LinksGroup() {
 
   if (dimensions.width < 1024) return null
 
+  const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+  }
+
   return (
     <Group>
-      <Link href="/blog">
+      <Link
+        href="/blog"
+        aria-disabled
+        className="disabled-link"
+        onClick={handleOnClick}
+      >
         <span>Blog</span> <MdArrowOutward />
       </Link>
       <Line />
