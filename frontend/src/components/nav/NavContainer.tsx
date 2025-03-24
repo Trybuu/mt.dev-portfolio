@@ -11,7 +11,6 @@ const Nav = styled(motion.nav)`
   top: 0;
   right: 0;
   left: 0;
-  max-width: 2560px;
   margin: 0 auto;
   display: flex;
   gap: 4rem;

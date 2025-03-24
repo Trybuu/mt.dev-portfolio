@@ -99,38 +99,50 @@ const Nav = styled.nav`
   }
 `
 
-const aboutData = [
+interface AboutData {
+  id: number
+  displayNumber: string
+  title: string
+  text: string
+  imageSrc: string
+  imageAlt: string
+}
+
+const aboutData: AboutData[] = [
   {
     id: 0,
     displayNumber: '01',
     title: 'Kim jestem',
     text: 'Jestem frontend developerem z pasją do tworzenia nowoczesnych, responsywnych i intuicyjnych interfejsów użytkownika. Specjalizuję się w React, TypeScript i CSS-in-JS. Dbam o responsywność, optymalizację i dostępność stron i aplikacji. ',
-    imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
-    imageAlit: 'Moje zdjęcie',
+    imageSrc: '/images/gian-porsius-GqDTtkiMZEw-unsplash.jpg',
+    imageAlt:
+      'Człowiek idący górzystą ścieżką - Photo by Gian Porsius on Unsplash',
   },
   {
     id: 1,
     displayNumber: '02',
     title: 'Poza kodem',
     text: 'Poza programowaniem jestem osobą otwartą na nowe doświadczenia i wyzwania. Wolny czas lubię spędzać aktywnie - na siłowni, rowerze czy rolkach. Cenię czas spędzany z najbliższymi, nie odmówię wieczoru z ciekawą planszówką.',
-    imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
-    imageAlit: 'Moje zdjęcie',
+    imageSrc: '/images/paul-green-gOHfFgwyDNM-unsplash.jpg',
+    imageAlt:
+      'Człowiek zjeżdzający na rowerze - Photo by Paul Green on Unsplash',
   },
   {
     id: 2,
     displayNumber: '03',
     title: 'Nieustanny rozwój',
     text: 'Świat technologii zmienia się błyskawicznie, więc staram się nieustannie poszerzać swoją wiedzę. Zawsze mam zaplanowane kolejne etapy nauki, aby rozwijać się świadomie i skutecznie.',
-    imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
-    imageAlit: 'Moje zdjęcie',
+    imageSrc: '/images/gery-wibowo-Eti6ph51H4A-unsplash.jpg',
+    imageAlt: 'Laptop i książka - Photo by Gery Wibowo on Unsplash',
   },
   {
     id: 3,
     displayNumber: '04',
     title: 'Stack technologiczny',
     text: 'Na co dzień pracuję z technologiami takimi jak TypeScript, JavaScript, React, Redux, React Router, React Hook Form, Axios, HTML, CSS i SCSS. Tworzę nowoczesne, wydajne i intuicyjne aplikacje, dbając o ich responsywność oraz dostępność. Nieustannie dążę do poszerzania swoich umiejętności. Obecnie koncentruję się na nauce Vue.js i React Native, aby lepiej zrozumieć ekosystem frontendu. Dodatkowo zamierzam zgłębić backendowe technologie, takie jak Express, GraphQL, Redis i PostgreSQL, a także rozwiązania chmurowe, w tym AWS. Moim celem jest rozwój w kierunku bardziej wszechstronnego full-stack developera.',
-    imageSrc: '/images/jake-nackos-CUYWM4KoFig-unsplash.jpg',
-    imageAlit: 'Moje zdjęcie',
+    imageSrc: '/images/deniz-altindas-t1XLQvDqt_4-unsplash.jpg',
+    imageAlt:
+      'Stos ułożonych na sobie kamieni - Photo by Deniz Altindas on Unsplash',
   },
 ]
 
@@ -192,8 +204,8 @@ export function About() {
         >
           <div className="image-wrapper">
             <Image
-              src="/images/jake-nackos-CUYWM4KoFig-unsplash.jpg"
-              alt="-"
+              src={activeArticle.imageSrc}
+              alt={activeArticle.imageAlt}
               width={1500}
               height={2200}
               quality={100}

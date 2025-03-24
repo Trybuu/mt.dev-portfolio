@@ -5,6 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 import styled from 'styled-components'
 
 const Button = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,17 +16,17 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.accent};
   border: none;
   border-radius: 50%;
+  cursor: pointer;
 `
 
-export function NavButton({
-  onClick,
-  isOpen,
-}: {
+interface NavButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick: () => void
   isOpen: boolean
-}) {
+}
+
+export function NavButton({ onClick, isOpen, ...props }: NavButtonProps) {
   return (
-    <Button onClick={onClick}>
+    <Button onClick={onClick} {...props}>
       {isOpen ? <IoMdClose /> : <HiOutlineMenuAlt4 />}
     </Button>
   )
