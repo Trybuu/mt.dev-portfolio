@@ -203,15 +203,19 @@ export function About() {
           }}
         >
           <div className="image-wrapper">
-            <Image
-              src={activeArticle.imageSrc}
-              alt={activeArticle.imageAlt}
-              width={1500}
-              height={2200}
-              quality={100}
-              priority
-              style={{ width: '100%', height: 'auto', borderRadius: '1rem' }}
-            />
+            {activeArticle &&
+            activeArticle.imageSrc &&
+            activeArticle.imageAlt ? (
+              <Image
+                src={activeArticle.imageSrc}
+                alt={activeArticle.imageAlt}
+                width={1500}
+                height={2200}
+                quality={100}
+                priority
+                style={{ width: '100%', height: 'auto', borderRadius: '1rem' }}
+              />
+            ) : null}
           </div>
           <div className="text-content">
             <h3>{activeArticle?.title}</h3>
