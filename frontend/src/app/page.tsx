@@ -29,6 +29,21 @@ export default function Home() {
     <ThemeProvider theme={theme}>
       <WebsiteLoading />
       <PortfolioNav scrollYProgress={scrollYProgress} />
+      <div
+        style={{
+          position: 'fixed',
+          top: '1rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundColor: 'black',
+          color: 'white',
+          padding: '1rem',
+          zIndex: '100',
+          opacity: '50%',
+        }}
+      >
+        Work in Progress
+      </div>
       <StickyContainer>
         <Hero scrollYProgress={scrollYProgress} />
         <SectionsWrapper>
